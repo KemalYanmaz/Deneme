@@ -1,15 +1,23 @@
 public class Milletvekilleri extends Vatandaslar{
-
-    public Milletvekilleri(Date birthday, String name, String surname) {
+    private int sicilNo;
+    public Milletvekilleri(Date birthday, String name, String surname,int sicilNo) {
         super(birthday, name, surname);
+        this.sicilNo=sicilNo;
     }
-    public void voting(boolean vote){
+    public String voting(boolean vote){
         if(vote){
-            System.out.println(super.getName()+" "+super.getSurname()+" voting possitive.");
+            return super.getName()+" "+super.getSurname()+" evet oyu veriyor.";
         }else{
-            System.out.println(super.getName()+" "+super.getSurname()+" voting negative.");
+            return super.getName()+" "+super.getSurname()+" hayır oyu veriyor.";
         }
     }
+    public int getSicilNo(){
+        return this.sicilNo;
+    }
 
+    public String toString(){
+        return super.getName()+" "+super.getSurname();
+        
+    } 
     
 }

@@ -4,7 +4,7 @@ import java.util.Random;
 
 public  class Vatandaslar {
 Random random=new Random();
-ArrayList<Integer> identities=new ArrayList<>();  
+static ArrayList<Integer> identities=new ArrayList<>();  
     private int identityNo;
     private Date birthday;
     private String name,surname;
@@ -20,19 +20,12 @@ ArrayList<Integer> identities=new ArrayList<>();
 
     private int pushIdentity(){
         String id=String.valueOf(random.nextInt(100))+String.valueOf(random.nextInt(100))+String.valueOf(random.nextInt(100));
-        while(identities.indexOf(Integer.valueOf(id))!=-1)
+        while(identities.contains(Integer.valueOf(id)))
         {
-          id=String.valueOf(random.nextInt(100))+String.valueOf(random.nextInt(100))+String.valueOf(random.nextInt(100));
+          id=String.valueOf(random.nextInt(1000))+String.valueOf(random.nextInt(100))+String.valueOf(random.nextInt(100));
         }
         identities.add(Integer.valueOf(id));
         return Integer.valueOf(id);
-    }
-    public Random getRandom() {
-        return random;
-    }
-
-    public void setRandom(Random random) {
-        this.random = random;
     }
 
     public ArrayList<Integer> getIdentities() {
@@ -96,10 +89,13 @@ ArrayList<Integer> identities=new ArrayList<>();
     public void talking(String text){
         System.out.println(this.name+": \""+text+".\"");
     }
-    public void voting(boolean vote){
+    public String voting(boolean vote){
         if(vote)
-        System.out.println(this.name+" wants the law to pass the parliament.");
+            return this.name+" wants the law to pass the parliament.";
         else
-        System.out.println(this.name+" does not want the law to pass through parliament.");
+            return this.name+" does not want the law to pass through parliament.";
+    }
+    public Boolean vote(){
+        return random.nextBoolean();
     }
 }
